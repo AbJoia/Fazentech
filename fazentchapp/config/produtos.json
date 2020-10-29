@@ -1,0 +1,27 @@
+[
+    {
+        "imagem": "https://img.imirante.com.br/2020/03/12/1584009266-282284889-810x471.jpg",
+        "nome": "Doce de Leite",
+        "preco": 15.00 
+    },
+    {
+        "imagem": "https://img.olx.com.br/images/72/728925016649468.jpg",
+        "nome": "Leite de Vaca",
+        "preco": 9.90 
+    },
+    {
+        "imagem": "https://img.olx.com.br/images/53/539906018797458.jpg",
+        "nome": "Milho Verde",
+        "preco": 6.99
+    },
+    {
+        "imagem": "https://conteudo.imguol.com.br/blogs/171/files/2019/10/manteiga-1024x683.jpg",
+        "nome": "Manteiga",
+        "preco": 19.90 
+    },
+    {
+        "imagem": "https://uploads.metropoles.com/wp-content/uploads/2019/02/28172451/queijo-.jpg",
+        "nome": "Queijo Minas",
+        "preco": 15.99 
+    }
+]
