@@ -1,9 +1,14 @@
 import React from 'react';
 import {Text} from 'react-native';
 
+import Header from '../../Components/Header';
+
 const OrderReview = () =>{
     return(
-        <Text>OrderReview</Text>
+        <>
+            <Header titulo="Revisão do Pedido"/>
+            <Text>OrderReview</Text>
+        </>
     );
 }
 
