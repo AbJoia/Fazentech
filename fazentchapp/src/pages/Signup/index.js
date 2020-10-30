@@ -1,9 +1,14 @@
 import React from 'react';
 import {Text} from 'react-native';
 
+import Header from '../../Components/Header';
+
 const Signup = () =>{
     return(
-        <Text>Signup</Text>
+        <>
+            <Header titulo="Cadastro de usuário"/>
+            <Text>Signup</Text>
+        </>
     );
 }
 
