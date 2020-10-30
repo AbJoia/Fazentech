@@ -16,11 +16,12 @@ const CardProduct = ({prod}) =>{
                 <Text style={style.texto}>{prod.nome}</Text>
                 <Text style={style.texto}>R$ {prod.preco.toFixed(2)}</Text>
                 <View style={style.qtd}>
+
                     <TouchableHighlight 
                         underlayColor={"#DDDDDD"}
                             onPress={() => alert('Menos')}
                             >
-                    <Text style={style.textoqtd}>-</Text>
+                        <Text style={style.textoqtd}>-</Text>
                     </TouchableHighlight>
 
                     <Text style={style.textoqtd}>{quantidade}</Text>
@@ -29,13 +30,14 @@ const CardProduct = ({prod}) =>{
                         underlayColor={"#DDDDDD"}
                             onPress={() => alert('Maior')}
                             >
-                    <Text style={style.textoqtd}>+</Text>
+                        <Text style={style.textoqtd}>+</Text>
                     </TouchableHighlight>
+
                 </View>
                 <TouchableHighlight style={style.button}
                     underlayColor="#DDDDDD"
                     onPress={() => alert('Pressed!')}
-                >
+                    >
                     <Text style={style.texto}>Add Cesta</Text>
                 </TouchableHighlight>
             </View>
