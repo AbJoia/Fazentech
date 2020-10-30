@@ -9,7 +9,6 @@ const Home = () =>{
 
     const [produtos, setProdutos] = useState(ListaProdutos)
 
-
     return(
         <>
             <Header titulo="Catálogo de Produtos"/>
