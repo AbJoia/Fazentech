@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput} from 'react-native';
+import {Text, View, TextInput, TouchableHighlight} from 'react-native';
 
 import style from './style';
 
@@ -18,6 +18,23 @@ const Form = () =>{
                 <TextInput style={style.input} placeholder={"Cidade"}/>
                 <TextInput style={style.input} maxLength={2} placeholder={"Estado"}/>
                 <TextInput style={style.input} placeholder={"CEP"}/>
+            </View>
+            <View style={style.buttonArea}>
+                <TouchableHighlight 
+                    style={style.ok} 
+                        onPress={() => alert('Cadastrou')} 
+                            underlayColor={'#DDDDDD'}
+                >
+                    <Text style={style.textoButton}>Cadastrar</Text>
+                </TouchableHighlight> 
+
+                <TouchableHighlight 
+                    style={style.cancel} 
+                        onPress={() => alert('Cancelou')} 
+                            underlayColor={'#DDDDDD'}
+                >
+                    <Text style={style.textoButton}>Cancelar</Text>
+                </TouchableHighlight>                                  
             </View>
         </View>
     );
