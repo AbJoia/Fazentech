@@ -12,6 +12,10 @@ import OrderReview from '../../pages/OrderReview';
 const Tab = createBottomTabNavigator();
 
 const NavigationBar = () =>{
+
+  
+
+
     return(
       <>
         <StatusBar backgroundColor={'#222626'} />

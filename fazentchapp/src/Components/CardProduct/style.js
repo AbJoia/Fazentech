@@ -26,13 +26,16 @@ const style = StyleSheet.create({
         height: 40,
         marginTop: 10,
         marginRight: 10,
-        backgroundColor: '#fff',
-        justifyContent: "center",
+        backgroundColor: '#fff',        
         justifyContent:"space-between",
         alignItems: "center",
         flexDirection:'row',
         paddingHorizontal: 10,
         borderRadius: 5,
+    },
+
+    areaPress: {
+        width: 20
     },
 
     button:{

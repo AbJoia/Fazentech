@@ -7,6 +7,16 @@ const CardProduct = ({prod}) =>{
 
     const [quantidade, setQuantidade] = useState(0);
 
+    const incrementaQuantidade = () =>{
+        setQuantidade(quantidade +1);
+    }
+
+    const decrementaQuantidade = () =>{
+        if(quantidade !== 0){
+            setQuantidade(quantidade -1);
+        }        
+    }
+
     return(
         <View style={style.container}>            
             <View>
@@ -18,18 +28,20 @@ const CardProduct = ({prod}) =>{
                 <View style={style.qtd}>
 
                     <TouchableHighlight 
-                        underlayColor={"#DDDDDD"}
-                            onPress={() => alert('Menos')}
-                            >
+                        style={style.areaPress}
+                            underlayColor={"#DDDDDD"}
+                                onPress={() => decrementaQuantidade()}
+                                >
                         <Text style={style.textoqtd}>-</Text>
                     </TouchableHighlight>
 
                     <Text style={style.textoqtd}>{quantidade}</Text>
 
-                    <TouchableHighlight 
-                        underlayColor={"#DDDDDD"}
-                            onPress={() => alert('Maior')}
-                            >
+                    <TouchableHighlight
+                        style={style.areaPress} 
+                            underlayColor={"#DDDDDD"}
+                                onPress={() => incrementaQuantidade()}
+                                >
                         <Text style={style.textoqtd}>+</Text>
                     </TouchableHighlight>
 
