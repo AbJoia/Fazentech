@@ -7,7 +7,7 @@ import style from './style';
 const CardItem = ({produto}) =>{
     
     const subTotal = () =>{
-        return produto.preco * produto.quantidade;
+        return produto.preco * produto.quantidade;        
     }
 
 

@@ -15,18 +15,25 @@ const OrderReview = () =>{
             id: 1,
             imagem: "https://img.imirante.com.br/2020/03/12/1584009266-282284889-810x471.jpg",
             nome: "Doce de Leite",
-            quantidade: 1,
+            quantidade: 2,
             preco: 15.00 
         },
         {
             id: 2,
             imagem: "https://img.olx.com.br/images/72/728925016649468.jpg",
             nome: "Leite de Vaca",
-            quantidade: 2,
+            quantidade: 3,
             preco: 9.90 
         }
         
-    ]);
+    ]);    
+
+    const retornaTotal = () =>{
+        let sum = itensPedido.reduce((acumulator, total) =>
+         acumulator + total.quantidade * total.preco, 0)
+        return sum;
+    }  
+    
 
     return(
         <>
@@ -43,13 +50,13 @@ const OrderReview = () =>{
                     <ScrollView>
                         {itensPedido.length !== 0 ?  
                         itensPedido.map((item) =>(                            
-                            <CardItem produto={item} />
+                            <CardItem key={item.id} produto={item}/>
                         )) : <Text style={style.cestaVazia}>Cesta Vazia</Text>}                                
                     </ScrollView>  
                 </View>                              
                 <View style={Style.legenda}>
                     <Text style={Style.texto}>TOTAL:</Text>                    
-                    <Text style={Style.texto}>R$ 13.30</Text>
+                    <Text style={Style.texto}>R$ {retornaTotal().toFixed(2)}</Text>
                 </View>
                 <View style={style.buttonArea}>
                     <TouchableHighlight 
@@ -62,7 +69,7 @@ const OrderReview = () =>{
 
                     <TouchableHighlight 
                         style={style.cancel} 
-                            onPress={() => alert('Cancelou')} 
+                            onPress={() => alert("Cancelou")} 
                                 underlayColor={'#DDDDDD'}
                     >
                         <Text style={style.textoButton}>Cancelar</Text>
