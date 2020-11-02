@@ -7,16 +7,17 @@ import style from './style';
 const CardItem = ({produto}) =>{
     
     const subTotal = () =>{
-        return produto.preco * produto.quantidade;        
+        return produto.produto.preco * produto.quantidade;        
     }
 
+    //Verificar nivel de estrutura PRODUTO
 
     return(
         <View style={style.cardItem}>
-            <Image style={style.imgArea} source={{uri: produto.imagem}}/>
-            <Text>{produto.nome}</Text>
+            <Image style={style.imgArea} source={{uri: produto.produto.imagem}}/>
+            <Text>{produto.produto.nome}</Text>
             <Text>{produto.quantidade}</Text>
-            <Text>R$ {produto.preco.toFixed(2)}</Text>
+            <Text>R$ {produto.produto.preco.toFixed(2)}</Text>
             <Text>R$ {subTotal().toFixed(2)}</Text>
         </View>
     );

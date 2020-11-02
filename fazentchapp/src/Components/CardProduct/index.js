@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import {View, Text, Image, TouchableHighlight} from 'react-native';
+import {View, Text, Image, TouchableHighlight, Alert} from 'react-native';
 
 import style from './style';
 
-const CardProduct = ({prod}) =>{
+const CardProduct = ({prod, cestaPedido}) =>{
 
     const [quantidade, setQuantidade] = useState(0);
 
@@ -14,6 +14,16 @@ const CardProduct = ({prod}) =>{
     const decrementaQuantidade = () =>{
         if(quantidade !== 0){
             setQuantidade(quantidade -1);
+        }        
+    }
+
+    const adicionarNaCesta = () =>{
+        if(quantidade > 0){
+            cestaPedido(prod, quantidade)
+            setQuantidade(0)
+            Alert.alert('Produto adicionado na cesta!')
+        }else{
+            Alert.alert('Quantidade igual a 0', 'Você deve informar uma quantidade.')
         }        
     }
 
@@ -48,7 +58,7 @@ const CardProduct = ({prod}) =>{
                 </View>
                 <TouchableHighlight style={style.button}
                     underlayColor="#DDDDDD"
-                    onPress={() => alert('Pressed!')}
+                    onPress={() => adicionarNaCesta()}
                     >
                     <Text style={style.texto}>Add Cesta</Text>
                 </TouchableHighlight>

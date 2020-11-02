@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, View, ScrollView, TouchableHighlight} from 'react-native';
 
 import Header from '../../Components/Header';
@@ -8,32 +8,34 @@ import Style from './style';
 import style from './style';
 
 
-const OrderReview = () =>{
+const OrderReview = ({route}) =>{
 
+    const {params} = route;       
+    
     const [itensPedido, setItensPedido] = useState([
-        {
-            id: 1,
-            imagem: "https://img.imirante.com.br/2020/03/12/1584009266-282284889-810x471.jpg",
-            nome: "Doce de Leite",
-            quantidade: 2,
-            preco: 15.00 
-        },
-        {
-            id: 2,
-            imagem: "https://img.olx.com.br/images/72/728925016649468.jpg",
-            nome: "Leite de Vaca",
-            quantidade: 3,
-            preco: 9.90 
-        }
-        
-    ]);    
+        // {            
+        //     produto: {
+        //         id: "",
+        //         imagem: "",
+        //         nome: "",
+        //         preco: ""
+        //     }, 
+        //     quantidade: ""            
+        // }
+    ]);        
+    
+    useEffect(() =>{
+         if(params){
+            setItensPedido(params[0])
+         }         
+                  
+    },[params])    
 
     const retornaTotal = () =>{
         let sum = itensPedido.reduce((acumulator, total) =>
-         acumulator + total.quantidade * total.preco, 0)
+         acumulator + total.quantidade * total.produto.preco, 0)
         return sum;
-    }  
-    
+    }     
 
     return(
         <>
@@ -47,10 +49,10 @@ const OrderReview = () =>{
                     <Text style={Style.texto}>SubTotal</Text>
                 </View>                
                 <View style={style.cardItem}>  
-                    <ScrollView>
+                    <ScrollView>                                                
                         {itensPedido.length !== 0 ?  
                         itensPedido.map((item) =>(                            
-                            <CardItem key={item.id} produto={item}/>
+                            <CardItem key={item.produto.id} produto={item}/>
                         )) : <Text style={style.cestaVazia}>Cesta Vazia</Text>}                                
                     </ScrollView>  
                 </View>                              
