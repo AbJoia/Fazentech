@@ -82,7 +82,7 @@ const OrderReview = ({route, navigation}) =>{
 
     const enviarEmail = () =>{
         const to = 'produtosfazentech@gmail.com';
-        email(to, {            
+        email(to, {                       
             subject: 'Novo Pedido',
             body: 
             "Informações do Pedido\n\n" +
