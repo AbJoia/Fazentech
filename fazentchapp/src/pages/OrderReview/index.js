@@ -112,44 +112,46 @@ const OrderReview = ({route, navigation}) =>{
     return(
         <>
             <Header titulo="Revisão do Pedido"/>
-            <View style={Style.container}>
-                <View style={Style.legenda}>
-                    <Text style={Style.texto}>                       </Text>
-                    <Text style={Style.texto}>Produto</Text>
-                    <Text style={Style.texto}>Qtd</Text>
-                    <Text style={Style.texto}>Valor Und</Text>
-                    <Text style={Style.texto}>SubTotal</Text>
-                </View>                
-                <View style={Style.cardItem}>  
-                    <ScrollView>                                                
-                        {itensPedido.length !== 0 ?  
-                        itensPedido.map((item) =>(                            
-                            <CardItem key={item.produto.id} produto={item}/>
-                        )) : <Text style={Style.cestaVazia}>Cesta Vazia</Text>}                                
-                    </ScrollView>  
-                </View>                              
-                <View style={Style.legenda}>
-                    <Text style={Style.texto}>TOTAL:</Text>                    
-                    <Text style={Style.texto}>R$ {retornaTotal().toFixed(2)}</Text>
-                </View>
-                <View style={Style.buttonArea}>
-                    <TouchableHighlight 
-                        style={Style.ok} 
-                            onPress={() => confirmarPedido()} 
-                                underlayColor={'#DDDDDD'}
-                    >
-                        <Text style={Style.textoButton}>Enviar Pedido</Text>
-                    </TouchableHighlight> 
+            <ScrollView>
+                <View style={Style.container}>
+                    <View style={Style.legenda}>
+                        <Text style={Style.texto}>                       </Text>
+                        <Text style={Style.texto}>Produto</Text>
+                        <Text style={Style.texto}>Qtd</Text>
+                        <Text style={Style.texto}>Valor Und</Text>
+                        <Text style={Style.texto}>SubTotal</Text>
+                    </View>                
+                    <View style={Style.cardItem}>  
+                        <ScrollView>                                                
+                            {itensPedido.length !== 0 ?  
+                            itensPedido.map((item) =>(                            
+                                <CardItem key={item.produto.id} produto={item}/>
+                            )) : <Text style={Style.cestaVazia}>Cesta Vazia</Text>}                                
+                        </ScrollView>  
+                    </View>                              
+                    <View style={Style.legenda}>
+                        <Text style={Style.texto}>TOTAL:</Text>                    
+                        <Text style={Style.texto}>R$ {retornaTotal().toFixed(2)}</Text>
+                    </View>
+                    <View style={Style.buttonArea}>
+                        <TouchableHighlight 
+                            style={Style.ok} 
+                                onPress={() => confirmarPedido()} 
+                                    underlayColor={'#DDDDDD'}
+                        >
+                            <Text style={Style.textoButton}>Enviar Pedido</Text>
+                        </TouchableHighlight> 
 
-                    <TouchableHighlight 
-                        style={Style.cancel} 
-                            onPress={() => confirmarCancelar()} 
-                                underlayColor={'#DDDDDD'}
-                    >
-                        <Text style={Style.textoButton}>Cancelar</Text>
-                    </TouchableHighlight>                                  
+                        <TouchableHighlight 
+                            style={Style.cancel} 
+                                onPress={() => confirmarCancelar()} 
+                                    underlayColor={'#DDDDDD'}
+                        >
+                            <Text style={Style.textoButton}>Cancelar</Text>
+                        </TouchableHighlight>                                  
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
         </>
     );
 }
