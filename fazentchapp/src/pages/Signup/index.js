@@ -4,11 +4,11 @@ import {Text} from 'react-native';
 import Header from '../../Components/Header';
 import Form from '../../Components/Form';
 
-const Signup = () =>{
+const Signup = ({navigation}) =>{
     return(
         <>
             <Header titulo="Cadastro de usuário"/>
-            <Form/>
+            <Form navigation={navigation}/>
         </>
     );
 }
