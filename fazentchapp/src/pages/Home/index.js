@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text, ScrollView, Alert, Button, TouchableHighlight } from 'react-native';
+import React, {useState } from 'react';
+import { Text, ScrollView, TouchableHighlight } from 'react-native';
 
 import Header from '../../Components/Header';
 import CardProduct from '../../Components/CardProduct';
