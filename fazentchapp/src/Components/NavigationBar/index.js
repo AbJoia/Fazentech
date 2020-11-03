@@ -3,7 +3,7 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {StatusBar, StyleSheet} from 'react-native';
+import {Image, StatusBar, StyleSheet} from 'react-native';
 
 import Home from '../../pages/Home';
 import Signup from '../../pages/Signup';
@@ -12,9 +12,6 @@ import OrderReview from '../../pages/OrderReview';
 const Tab = createBottomTabNavigator();
 
 const NavigationBar = () =>{
-
-  
-
 
     return(
       <>

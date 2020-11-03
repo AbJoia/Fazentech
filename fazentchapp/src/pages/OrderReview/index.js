@@ -8,7 +8,7 @@ import Usuario from '../../../config/usuario.json';
 
 import Style from './style';
 
-const OrderReview = ({route}) =>{     
+const OrderReview = ({route, navigation}) =>{     
 
     const {params} = route; 
 
@@ -36,6 +36,30 @@ const OrderReview = ({route}) =>{
         let sum = itensPedido.reduce((acumulator, total) =>
          acumulator + total.quantidade * total.produto.preco, 0)
         return sum;
+    }
+
+    const cancelarCesta = () =>{        
+        navigation.navigate('Home')
+    }
+
+    const confirmarCancelar = () =>{
+        Alert.alert("Cancelar Pedido?",
+         "Deseja realmente cancelar o pedido?"
+         + "\nTodos os itens de sua cesta serão removidos",
+         [
+             {
+                 text: 'Confirmar',
+                 onPress: () => cancelarCesta()          
+                 
+             },
+             {
+                 text: 'Cancelar',
+                 style: 'cancel'
+             }
+         ],
+
+         {cancelable: false}      
+        )
     }
     
     const confirmarPedido = () =>{
@@ -119,7 +143,7 @@ const OrderReview = ({route}) =>{
 
                     <TouchableHighlight 
                         style={Style.cancel} 
-                            onPress={() => alert("Cancelou")} 
+                            onPress={() => confirmarCancelar()} 
                                 underlayColor={'#DDDDDD'}
                     >
                         <Text style={Style.textoButton}>Cancelar</Text>
