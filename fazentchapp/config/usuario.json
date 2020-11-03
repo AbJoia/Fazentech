@@ -1,0 +1,12 @@
+{
+    "nome": "João Carlinhos",
+    "email": "joaocarlinhos@gmail.com",
+    "endereco":{
+        "logradouro": "Rua Brasil, 122",
+        "bairro": "Centro",
+        "cidade": "Petrópolis",
+        "estado": "RJ",
+        "cep": "25660-000"
+    } 
+}
+
