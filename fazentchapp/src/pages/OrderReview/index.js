@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Text, View, ScrollView, TouchableHighlight} from 'react-native';
+import {Text, View, ScrollView, TouchableHighlight, Alert} from 'react-native';
 import email from 'react-native-email';
 
 import Header from '../../Components/Header';
@@ -36,7 +36,25 @@ const OrderReview = ({route}) =>{
         let sum = itensPedido.reduce((acumulator, total) =>
          acumulator + total.quantidade * total.produto.preco, 0)
         return sum;
-    } 
+    }
+    
+    const confirmarPedido = () =>{
+        Alert.alert("Fechar Pedido?",
+         "Deseja fechar o pedido e enviar?",
+         [
+             {
+                 text: 'Confirmar',
+                 onPress: () => enviarEmail()
+             },
+             {
+                 text: 'Cancelar',
+                 style: 'cancel'
+             }
+         ],
+
+         {cancelable: false}      
+        )
+    }
 
     const enviarEmail = () =>{
         const to = 'produtosfazentech@gmail.com';
@@ -93,7 +111,7 @@ const OrderReview = ({route}) =>{
                 <View style={Style.buttonArea}>
                     <TouchableHighlight 
                         style={Style.ok} 
-                            onPress={() => enviarEmail()} 
+                            onPress={() => confirmarPedido()} 
                                 underlayColor={'#DDDDDD'}
                     >
                         <Text style={Style.textoButton}>Enviar Pedido</Text>
