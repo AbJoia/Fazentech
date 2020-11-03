@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {Text, View, ScrollView, TouchableHighlight} from 'react-native';
+import email from 'react-native-email';
 
 import Header from '../../Components/Header';
 import CardItem from '../../Components/CardItem';
+import Usuario from '../../../config/usuario.json';
 
 import Style from './style';
-import style from './style';
 
+const OrderReview = ({route}) =>{     
 
-const OrderReview = ({route}) =>{
+    const {params} = route; 
 
-    const {params} = route;       
-    
+    const [usuario] = useState(Usuario)
     const [itensPedido, setItensPedido] = useState([
         // {            
         //     produto: {
@@ -35,7 +36,36 @@ const OrderReview = ({route}) =>{
         let sum = itensPedido.reduce((acumulator, total) =>
          acumulator + total.quantidade * total.produto.preco, 0)
         return sum;
-    }     
+    } 
+
+    const enviarEmail = () =>{
+        const to = 'produtosfazentech@gmail.com';
+        email(to, {            
+            subject: 'Novo Pedido',
+            body: 
+            "Informações do Pedido\n\n" +
+            
+            itensPedido.map( item =>(
+                "\n" 
+                + item.produto.nome 
+                + "/ Qtd: " 
+                + item.quantidade 
+                + "......................... R$" 
+                + (item.quantidade * item.produto.preco).toFixed(2)                
+            ))
+
+            + "\n\nTotal do Pedido: ................................ R$" + retornaTotal().toFixed(2)
+            + "\n\nDados para Entrega:\n"
+            + "Nome: " + usuario.nome
+            + "\n E-mail: " + usuario.email
+            + "\n\nLogradouro : " + usuario.endereco.logradouro
+            + "\nBairro: " + usuario.endereco.bairro
+            + "\nCidade: " + usuario.endereco.cidade
+            + "\nEstado: " + usuario.endereco.estado
+            + "\nCEP: " + usuario.endereco.cep
+
+        }).catch(console.error)               
+    }
 
     return(
         <>
@@ -48,33 +78,33 @@ const OrderReview = ({route}) =>{
                     <Text style={Style.texto}>Valor Und</Text>
                     <Text style={Style.texto}>SubTotal</Text>
                 </View>                
-                <View style={style.cardItem}>  
+                <View style={Style.cardItem}>  
                     <ScrollView>                                                
                         {itensPedido.length !== 0 ?  
                         itensPedido.map((item) =>(                            
                             <CardItem key={item.produto.id} produto={item}/>
-                        )) : <Text style={style.cestaVazia}>Cesta Vazia</Text>}                                
+                        )) : <Text style={Style.cestaVazia}>Cesta Vazia</Text>}                                
                     </ScrollView>  
                 </View>                              
                 <View style={Style.legenda}>
                     <Text style={Style.texto}>TOTAL:</Text>                    
                     <Text style={Style.texto}>R$ {retornaTotal().toFixed(2)}</Text>
                 </View>
-                <View style={style.buttonArea}>
+                <View style={Style.buttonArea}>
                     <TouchableHighlight 
-                        style={style.ok} 
-                            onPress={() => alert('Cadastrou')} 
+                        style={Style.ok} 
+                            onPress={() => enviarEmail()} 
                                 underlayColor={'#DDDDDD'}
                     >
-                        <Text style={style.textoButton}>Enviar Pedido</Text>
+                        <Text style={Style.textoButton}>Enviar Pedido</Text>
                     </TouchableHighlight> 
 
                     <TouchableHighlight 
-                        style={style.cancel} 
+                        style={Style.cancel} 
                             onPress={() => alert("Cancelou")} 
                                 underlayColor={'#DDDDDD'}
                     >
-                        <Text style={style.textoButton}>Cancelar</Text>
+                        <Text style={Style.textoButton}>Cancelar</Text>
                     </TouchableHighlight>                                  
                 </View>
             </View>
