@@ -39,9 +39,9 @@ const Home = ({navigation}) =>{
             <TouchableHighlight 
                 style={Style.areaPress}
                     underlayColor={"#DDDDDD"}
-                    onPress={() => navigation.navigate('OrderReview', [cesta])}
+                    onPress={() => navigation.navigate('Cesta de Produtos', [cesta])}
                         >
-                <Text style={Style.texto}>Cesta de Produtos</Text>
+                <Text style={Style.texto}>Revisar Produtos</Text>
             </TouchableHighlight>            
             : null}                      
         </>
